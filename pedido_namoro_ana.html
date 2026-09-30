@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Para a Ana ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,"Times New Roman",serif;background:#10030a;color:#fff;overflow-x:hidden}
+canvas{position:fixed;inset:0;z-index:-2}
+.bg{position:fixed;inset:0;z-index:-1;background:
+radial-gradient(circle at 50% 20%,#ff397055,transparent 35%),
+radial-gradient(circle at 20% 80%,#9d174d44,transparent 35%),
+linear-gradient(145deg,#16040d,#390b24,#080207)}
+section{min-height:100vh;padding:60px 18px;display:flex;align-items:center;justify-content:center}
+.wrap{width:min(900px,100%);text-align:center}
+.card{padding:35px 24px;border:1px solid #ffffff22;background:#ffffff0d;backdrop-filter:blur(13px);border-radius:30px;box-shadow:0 20px 80px #0008}
+h1{font-size:clamp(3.4rem,14vw,8rem);line-height:.9;text-shadow:0 0 35px #ff4f92}
+h2{font-size:clamp(2rem,7vw,4rem);color:#ffd0df;margin-bottom:25px}
+p{line-height:1.8;color:#ffe6ef;font-size:1.12rem}
+.heart{font-size:5rem;animation:pulse 1.4s infinite;filter:drop-shadow(0 0 22px #ff3d86)}
+@keyframes pulse{50%{transform:scale(1.2)}}
+.btn{border:0;cursor:pointer;display:inline-block;padding:15px 30px;border-radius:999px;margin:22px 7px 0;
+font-size:1rem;color:white;background:linear-gradient(90deg,#ff337d,#ff75a7);box-shadow:0 10px 35px #ff337d55}
+.btn:hover{transform:translateY(-2px)}
+.buttons{margin-top:12px}
+#nao{background:#ffffff18;border:1px solid #ffffff25;position:relative}
+.poem{font-style:italic;margin:25px auto;max-width:700px}
+.choice{display:none}
+.choice.show{display:block;animation:appear .8s ease}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.big{font-size:clamp(1.7rem,6vw,3.2rem);color:#ffb3cb;margin-bottom:18px}
+.line{height:1px;background:#ffffff20;margin:25px 0}
+footer{padding:35px;text-align:center;color:#cfa0b2}
+</style>
+</head>
+<body>
+<canvas id="hearts"></canvas><div class="bg"></div>
+
+<section>
+<div class="wrap">
+<div class="heart">❤️</div>
+<h1>ANA</h1>
+<p class="poem">
+“Há nomes que passam pelo vento,<br>
+e há nomes que ficam no coração.<br>
+O teu ficou em mim,<br>
+como uma estrela que não aceita apagar.”
+</p>
+<button class="btn" onclick="document.getElementById('pedido').scrollIntoView()">Tenho algo para te perguntar 💌</button>
+</div>
+</section>
+
+<section id="pedido">
+<div class="wrap">
+<div class="card">
+<h2>Quer namorar comigo, Ana? 🌹</h2>
+<p>
+Não quero prometer um conto de fadas perfeito,<br>
+quero construir contigo uma história verdadeira.<br><br>
+Quero ser a mensagem que te faz sorrir,<br>
+o abraço que te traz paz,<br>
+e a pessoa que escolhe ficar<br>
+quando os dias forem fáceis e quando forem difíceis.
+</p>
+
+<div class="line"></div>
+
+<p class="poem">
+“Se o amor fosse uma estrada,<br>
+eu não pediria que caminhasses por mim.<br>
+Só perguntaria se queres caminhar comigo,<br>
+lado a lado, até onde os nossos passos quiserem ir.”
+</p>
+
+<div class="buttons">
+<button class="btn" onclick="respostaSim()">SIM ❤️</button>
+<button class="btn" id="nao" onclick="respostaNao()">NÃO</button>
+</div>
+
+<div id="resultado" class="choice"></div>
+</div>
+</div>
+</section>
+
+<section id="final" style="display:none">
+<div class="wrap">
+<div class="card">
+<div class="big">Uma verdade, Ana... 💔</div>
+<p class="poem">
+“Eu não quero ser uma escolha guardada<br>
+para quando outra porta se fechar.<br>
+Não quero ser o segundo nome<br>
+na história que eu sonhei protagonizar.<br><br>
+
+Se o teu coração escolheu o Gabriel,<br>
+eu respeito o caminho que decidiste seguir.<br>
+Mas também preciso respeitar o meu coração:<br>
+não nasci para ser segunda opção,<br>
+nem para esperar por alguém que escolheu partir.<br><br>
+
+Então, se escolheste o Gabriel e não a mim,<br>
+não te culpo, não te odeio, não vou insistir.<br>
+Apenas vou guardar o que senti<br>
+e aprender, mesmo doendo, a seguir.<br><br>
+
+Porque amar também é saber deixar ir,<br>
+quando o outro coração já decidiu.<br>
+E mesmo que não seja comigo,<br>
+espero que encontres aquilo que procuras.<br>
+Eu só espero, um dia,<br>
+encontrar alguém que me escolha<br>
+sem hesitar em ficar.”
+</p>
+</div>
+</div>
+</section>
+
+<footer>Para a Ana — uma pergunta feita com o coração. ❤️</footer>
+
+<script>
+function respostaSim(){
+  const r=document.getElementById('resultado');
+  r.className='choice show';
+  r.innerHTML=`
+    <div class="line"></div>
+    <div class="big">Então era contigo que eu queria escrever esta história. ❤️</div>
+    <p class="poem">
+    “Entre tantas pessoas no mundo,<br>
+    o meu coração encontrou o teu.<br>
+    Se disseres sim de verdade,<br>
+    prometo cuidar do que nasceu entre nós.<br><br>
+    Que este seja o primeiro capítulo,<br>
+    não o último verso.”
+    </p>`;
+}
+function respostaNao(){
+  document.getElementById('final').style.display='flex';
+  setTimeout(()=>document.getElementById('final').scrollIntoView({behavior:'smooth'}),100);
+}
+
+// Botão "não" foge suavemente algumas vezes para tornar a brincadeira interativa,
+// mas continua acessível e nunca impede a escolha.
+let fugas=0;
+document.getElementById('nao').addEventListener('mouseenter',()=>{
+ if(fugas<3){
+   fugas++;
+   const b=document.getElementById('nao');
+   b.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*50-25}px)`;
+ }
+});
+
+// Corações flutuantes
+const c=document.getElementById('hearts'),ctx=c.getContext('2d');
+let w,h,p=[];
+function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+addEventListener('resize',resize);resize();
+for(let i=0;i<65;i++)p.push({x:Math.random()*w,y:Math.random()*h,v:.2+Math.random()*.8,s:10+Math.random()*16,a:Math.random()*6});
+function draw(){
+ ctx.clearRect(0,0,w,h);
+ p.forEach(x=>{
+  x.y-=x.v;x.a+=.01;
+  if(x.y<-30){x.y=h+20;x.x=Math.random()*w}
+  ctx.globalAlpha=.15+.2*Math.sin(x.a);
+  ctx.font=x.s+'px serif';ctx.fillText('♥',x.x,x.y);
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
